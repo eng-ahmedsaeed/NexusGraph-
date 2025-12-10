@@ -1,17 +1,71 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.HashMap;
+
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        HashMap<Integer, String> xml1 = new HashMap<>();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        xml1.put(1, "<root>");
+        xml1.put(2, "    <name>Ahmed</name>");
+        xml1.put(3, "    <age>21</age>");
+        xml1.put(4, "</root>");
+        XMLValidator validator = new XMLValidator(xml1);
+//        validator.validate();
+//        validator.PrintErrors();
+        HashMap<Integer, String> xml3 = new HashMap<>();
+
+        xml3.put(1, "<root>");
+        xml3.put(2, "<name>Ahmed</name>");
+        xml3.put(3, "</age>"); // Mismatched closing tag
+        xml3.put(4, "</root>");
+        validator.XMLSetter(xml3);
+//        validator.validate();
+//        validator.PrintErrors();
+
+        HashMap<Integer, String> xml6 = new HashMap<>();
+
+        xml6.put(1, "<root>");
+        xml6.put(2, "    </name>"); // Extra closing tag
+        xml6.put(3, "</root>");
+        validator.XMLSetter(xml6);
+//        validator.validate();
+//        validator.PrintErrors();
+
+
+
+        HashMap<Integer, String> xmlLines = new HashMap<>();
+
+        xmlLines.put(1, "<users>");
+        xmlLines.put(2, "    <user>");
+        xmlLines.put(3, "        <id>1</id>");
+        xmlLines.put(4, "        <name>user1</name>");
+        xmlLines.put(5, "        <posts>");
+        xmlLines.put(6, "            <post>");
+        xmlLines.put(7, "                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod");
+        xmlLines.put(8, "                tempor incididunt ut labore et dolore magna aliqua.");
+        xmlLines.put(9, "            </post>");
+        xmlLines.put(10, "            <post>");
+        xmlLines.put(11, "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi");
+        xmlLines.put(12, "                ut aliquip ex ea commodo consequat.");
+        xmlLines.put(13, "            </post>");
+        xmlLines.put(14, "        </posts>");
+        xmlLines.put(15, "        <followers>");
+        xmlLines.put(16, "            <follower>");
+        xmlLines.put(17, "                <name>2</id>");
+        xmlLines.put(18, "            </follower>");
+        xmlLines.put(19, "            <follower>");
+        xmlLines.put(20, "                <id>4</id>");
+        xmlLines.put(21, "            </follower>");
+        xmlLines.put(22, "    </user>");
+        xmlLines.put(23, "</users>");
+        validator.XMLSetter(xmlLines);
+                validator.validate();
+        validator.PrintErrors();
+
+        System.out.println("XML validated successfully");
+
+
     }
 }
