@@ -13,153 +13,207 @@ class TagInfo {
 }
 
 public class XMLValidator {
-    //*stack to use in tags matching validation
+
     private Stack<TagInfo> stack = new Stack<>();
-    //*map to hold the error lines with the message
     public HashMap<Integer, String> errors = new HashMap<>();
-    //*map to hold the xml file
+    public HashMap<Integer, String> fixerrors = new HashMap<>();
     private HashMap<Integer, String> XML = new HashMap<>();
-    //*Regex for the open tag format
+
     static final private String openTagRegex = "^[a-zA-Z_:][a-zA-Z0-9_.:-]*$";
-    //*Regex for the closingtag format
     static final private String closeTagRegex = "^/[a-zA-Z_:][a-zA-Z0-9_.:-]*$";
-    //*Regex for the text data for a tag
     static final private String textRegex = "^[^</>]*$";
 
     public XMLValidator(HashMap<Integer, String> XML) {
         this.XML = XML;
     }
-    public void XMLSetter(HashMap<Integer, String> XML)
-    {
-        this.XML=XML;
+
+    public void XMLSetter(HashMap<Integer, String> XML) {
+        this.XML = XML;
     }
 
     public void validate() {
-        //*string to hold the string data from the xml file
+
         String s;
-        //*flag to decide whiter when i am scanning if i am inside tag char
         boolean tagFlag = false;
-        //*index for map keys
         int index;
         int i;
-        //*string builder for tag and for the text
+
         StringBuilder tag = new StringBuilder("");
         StringBuilder text = new StringBuilder("");
-        //* for loop to move throw the lines
-        for ( i = 1; i <= XML.size(); i++) {
-            //*empty the 2 buffer after each line
-            text.delete(0, text.length());
-            tag.delete(0, tag.length());
 
+        for (i = 1; i <= XML.size(); i++) {
+
+            text.setLength(0);
+            tag.setLength(0);
             index = 0;
-            //*extracting the line as string from the map and pass it to the builder
-            //*then adding a '/n' to mark the end of the array
+
             s = XML.get(i);
             StringBuilder sb = new StringBuilder(s);
             sb.append('\n');
-            //*here i loop throw the whole line and take out the tags checking its syntex and push in  stack and also check the
-            //*syntex of the text
 
             while (sb.charAt(index) != '\n') {
+
                 if (sb.charAt(index) == '<') {
                     tagFlag = true;
                     textChecker(text, i);
-                    //*here i empty the text variable
-                    text.delete(0, text.length());
+                    text.setLength(0);
                     index++;
                     continue;
-                } else if (sb.charAt(index) == '>') {
+                }
+
+                else if (sb.charAt(index) == '>') {
                     tagFlag = false;
                     tagChecker(tag, i);
-                    //*here i empty the tag variable
-                    tag.delete(0, tag.length());
+                    tag.setLength(0);
                     index++;
                     continue;
                 }
 
                 if (tagFlag) {
                     tag.append(sb.charAt(index));
-
                 } else {
                     text.append(sb.charAt(index));
-
-
                 }
                 index++;
-
             }
         }
         stackChecker(i);
-
     }
 
     private void tagChecker(StringBuilder tag, int index) {
-        //*here i check the syntex of the tag and also its type to tell the stack
-        if (tag.toString().matches(openTagRegex)) {
-
-            stackPush(tag, true,index);
-            return;
-        } else if (tag.toString().matches(closeTagRegex)) {
-
-            stackPush(tag, false,index);
-            return;
+        // إزالة الأرقام من بداية tag سواء opening أو closing
+        String originalTag = tag.toString();
+        String isClosing = "";
+        if (originalTag.startsWith("/")) {
+            isClosing = "/";
+            originalTag = originalTag.substring(1);
         }
-        errors.put(index, "The tag" + tag.toString() + " has invalid format");
+
+        String fixedTagName = originalTag.replaceFirst("^\\d+", "");
+        if (!fixedTagName.equals(originalTag)) {
+            String fixedLine = XML.get(index);
+            if (fixedLine.contains("<")) {
+                int start = fixedLine.indexOf("<");
+                int end = fixedLine.indexOf(">");
+                fixedLine = fixedLine.substring(0, start+1) + (isClosing.equals("/") ? "/" : "") + fixedTagName + fixedLine.substring(end);
+            } else {
+                fixedLine = "<" + (isClosing.equals("/") ? "/" : "") + fixedTagName + ">";
+            }
+            fixerrors.put(index, fixedLine);
+            errors.put(index, "Invalid tag format, removed leading numbers: " + tag);
+            tag = new StringBuilder((isClosing.equals("/") ? "/" : "") + fixedTagName);
+        }
+
+        if (tag.toString().matches(openTagRegex)) {
+            stackPush(tag, true, index);
+        } else if (tag.toString().matches(closeTagRegex)) {
+            stackPush(tag, false, index);
+        } else {
+            errors.put(index, "The tag " + tag + " has invalid format");
+        }
     }
 
     private void textChecker(StringBuilder text, int index) {
-        //*here i check the text syntex against a regex
+
         if (text.toString().matches(textRegex)) {
             return;
         }
-        errors.put(index, "The text" + text + "contains invalid characters(< or > or /");
+        errors.put(index, "The text " + text + " contains invalid characters (< or > or /)");
     }
 
-    private void stackPush(StringBuilder tag, boolean openTag,int index) {
-        if (openTag) {
-            TagInfo t=new TagInfo(tag.toString(), index);
-            //*if its open tag then push it directly put convert it to string firstly
-            stack.push(t);
-        } else {
-            //* these conition to handle the case of mismatch leading to
-            //*adding an extra closing tag to empty stack
-            if(stack.isEmpty()){
-                errors.put(index, "wrong closing tag for unopened tag");
-           return;
-            }
-            String s = tag.toString().substring(1);
-            //*removing the number line before comparing
+    private void stackPush(StringBuilder tag, boolean openTag, int index) {
 
-            if (stack.peek().tag.equals(s)) {
+        if (openTag) {
+            stack.push(new TagInfo(tag.toString(), index));
+        } else {
+
+            if (stack.isEmpty()) {
+                errors.put(index, "wrong closing tag for unopened tag");
+                fixerrors.put(index, ""); // حذف السطر الغير مرغوب
+                return;
+            }
+
+            String s = tag.toString().substring(1); // اسم الوسم بدون /
+            TagInfo top = stack.peek();
+
+            if (top.tag.equals(s)) {
                 stack.pop();
             } else {
-                errors.put(index,"Tag mismatch expected"+"</"+stack.peek().tag+">");
+                // تعديل closing tag فقط بدون أي مسافة أو سطر جديد
+                String originalLine = XML.get(index);
+                int start = originalLine.indexOf("</");
+                String fixedLine;
+                if (start != -1) {
+                    fixedLine = originalLine.substring(0, start) + "</" + top.tag + ">";
+                } else {
+                    fixedLine = "</" + top.tag + ">";
+                }
+                errors.put(index, "Tag mismatch expected </" + top.tag + ">");
+                fixerrors.put(index, fixedLine);
                 stack.pop();
-
             }
-
         }
     }
-    private void stackChecker( int i) {
-        int line;
+
+    private void stackChecker(int i) {
         while (!stack.isEmpty()) {
             TagInfo t = stack.pop();
-            String s=t.tag;
-            //*here i convert the lie value from char to integer
-            line = t.line;
-            errors.put(i+1,"expecting closing tag " + "</"+s+">");
+            String s = t.tag;
+            int lineToInsert = XML.size() + 1;
+            errors.put(lineToInsert, "expecting closing tag </" + s + ">");
+            fixerrors.put(lineToInsert, "</" + s + ">");
+            // نضيف closing tag مباشرة بعد النص الأخير بدون أي مسافة إضافية
+            XML.put(lineToInsert, "</" + s + ">");
         }
     }
+
     public void PrintErrors() {
         if (errors.isEmpty()) {
-            System.out.println("No Errors is found ");
+            System.out.println("No Errors found");
         } else {
             System.out.println("Errors:");
             System.out.println(errors);
-
         }
-      errors.clear();
+        errors.clear();
+    }
 
+    private HashMap<Integer, String> reindex(HashMap<Integer, String> map) {
+        HashMap<Integer, String> newMap = new HashMap<>();
+        int line = 1;
+        for (int key = 1; key <= map.size(); key++) {
+            String v = map.get(key);
+            if (v != null && !v.trim().isEmpty()) {
+                newMap.put(line, v);
+                line++;
+            }
+        }
+        return newMap;
+    }
+
+    public HashMap<Integer, String> applyFixes() {
+        HashMap<Integer, String> fixedXML = new HashMap<>(XML);
+
+        for (Integer line : fixerrors.keySet()) {
+            String fix = fixerrors.get(line);
+
+            if (fix.equals("")) {
+                fixedXML.put(line, "");
+                continue;
+            }
+
+            fixedXML.put(line, fix);
+        }
+
+        return reindex(fixedXML);
+    }
+
+    public void PrintFixes() {
+        if (fixerrors.isEmpty()) {
+            System.out.println("No Fixes needed");
+        } else {
+            System.out.println("Fixes:");
+            System.out.println(fixerrors);
+        }
     }
 }
 
