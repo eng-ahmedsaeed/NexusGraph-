@@ -5,13 +5,13 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<Integer, String> xml1 = new HashMap<>();
+        // HashMap<Integer, String> xml1 = new HashMap<>();
 //
 //        xml1.put(1, "<root>");
 //        xml1.put(2, "    <name>Ahmed</name>");
 //        xml1.put(3, "    <age>21</age>");
 //        xml1.put(4, "</root>");
-       XMLValidator validator = new XMLValidator(xml1);
+       // XMLValidator validator = new XMLValidator(xml1);
 //        validator.validate();
 //         validator.PrintErrors();
 //        validator.PrintFixes();
@@ -89,9 +89,9 @@ public class Main {
 //            System.out.println(fixedXML.get(i));
 //        }
 
-        System.out.println("XML validated successfully");
+        // System.out.println("XML validated successfully");
 
-     System.out.println("\n========== TEST 1: VALID XML ==========");
+     // System.out.println("\n========== TEST 1: VALID XML ==========");
 
 //        HashMap<Integer, String> xml1 = new HashMap<>();
 //        xml1.put(1, "<root>");
