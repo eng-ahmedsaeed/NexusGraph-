@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.ArrayList;
 
 public class Graph {
@@ -47,5 +49,17 @@ public class Graph {
     }
     public int getFollow(int fromIndex, int toIndex) {
         return adjMatrix[fromIndex][toIndex];
+    }
+
+    public ArrayList<Pair<Integer, Integer>> getEdges() {
+        ArrayList<Pair<Integer, Integer>> edges = new ArrayList<>();
+        for (int i = 0; i < adjMatrix.length; i++) {
+            for (int j = 0; j < adjMatrix[i].length; j++) {
+                if (adjMatrix[i][j] == 1) {
+                    edges.add(new Pair<>(i, j));
+                }
+            }
+        }
+        return edges;
     }
 }
