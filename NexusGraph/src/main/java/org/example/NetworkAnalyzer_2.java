@@ -22,6 +22,36 @@ public class NetworkAnalyzer_2 {
             indexToId.put(i, graphObj.getVertices().get(i).id);
         }
     }
+    public List<Integer> mostActiveUsers() {
+        List<Integer> mostActiveUsersIds = new ArrayList<>();
+        int[][] matrix = graphObj.getAdjacencyMatrix();
+        int maxTotalConnections = 0;
+
+        int n = matrix.length;
+        for (int i = 0; i < n; i++) {
+            int outDegree = 0;
+            int inDegree = 0;
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 1) {
+                    outDegree++;
+                }
+                if (matrix[j][i] == 1) {
+                    inDegree++;
+                }
+            }
+            int totalConnections = outDegree + inDegree;
+            if (totalConnections > maxTotalConnections) {
+                maxTotalConnections = totalConnections;
+                mostActiveUsersIds.clear();
+                mostActiveUsersIds.add(i);
+            }
+            else if (totalConnections == maxTotalConnections && maxTotalConnections != 0) {
+                mostActiveUsersIds.add(i);
+            }
+        }
+        return mostActiveUsersIds;
+    }
+
     public void mostInfluencerUser() {
         int[][] graph = graphObj.getAdjacencyMatrix();
         ArrayList<Vertex> vertices = graphObj.getVertices();
@@ -84,5 +114,29 @@ public class NetworkAnalyzer_2 {
         if (!found) {
             System.out.println("No mutual followers found in your selected ids.");
         }
+    }
+    public List<Integer> suggestUsers(int userId) {
+        int userIndex = -1;
+        int[][] matrix = graphObj.getAdjacencyMatrix();
+
+        if (userId < 0 || userId >= matrix.length) {
+            return new ArrayList<>();
+        }
+        List<Integer> suggestionsIds = new ArrayList<>();
+        for (int followedIds = 0; followedIds < matrix.length; followedIds++) {
+            if (matrix[userIndex][followedIds] == 1) {
+                for (int i = 0; i < matrix.length; i++) {
+                    if (matrix[followedIds][i] == 1) {
+                        // Not recommending the user to themselves
+                        // User doesn't already follow this person
+                        // Person isn't already in the suggestions list
+                        if (i != userIndex && matrix[userIndex][i] == 0 && !suggestionsIds.contains(i)) {
+                            suggestionsIds.add(i);
+                        }
+                    }
+                }
+            }
+        }
+        return suggestionsIds;
     }
 }
