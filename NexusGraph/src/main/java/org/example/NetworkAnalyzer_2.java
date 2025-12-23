@@ -30,16 +30,12 @@ public class NetworkAnalyzer_2 {
         int n = matrix.length;
         for (int i = 0; i < n; i++) {
             int outDegree = 0;
-            int inDegree = 0;
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == 1) {
                     outDegree++;
                 }
-                if (matrix[j][i] == 1) {
-                    inDegree++;
-                }
             }
-            int totalConnections = outDegree + inDegree;
+            int totalConnections = outDegree ;
             if (totalConnections > maxTotalConnections) {
                 maxTotalConnections = totalConnections;
                 mostActiveUsersIds.clear();
