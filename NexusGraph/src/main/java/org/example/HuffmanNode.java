@@ -1,4 +1,4 @@
-package xml_terminalMode_WS;
+package org.example;
 
 public class HuffmanNode implements Comparable<HuffmanNode>{
 	private int frequency;

@@ -1,4 +1,4 @@
-
+package  org.example;
 import java.nio.file.Path;
 
 public class XmlEditorCLI {

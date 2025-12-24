@@ -1,9 +1,11 @@
+
+package  org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-class Graph<VertexType> {
+class Graph {
     private int[][] edges; // 0 = no edge, 1 = edge exists
-    private List<VertexType> vertices;
+    private List<Vertex> vertices;
     private boolean[] marks;
     private int maxVertices;
 
@@ -15,7 +17,7 @@ class Graph<VertexType> {
     }
 
     // Add a new vertex
-    public void addVertex(VertexType vertex) {
+    public void addVertex(Vertex vertex) {
         if (vertices.size() < maxVertices) {
             vertices.add(vertex);
             marks[vertices.size() - 1] = false;
@@ -25,7 +27,7 @@ class Graph<VertexType> {
     }
 
     // Add an edge (unweighted)
-    public void addEdge(VertexType fromVertex, VertexType toVertex) {
+    public void addEdge(Vertex fromVertex, Vertex toVertex) {
         int row = indexIs(fromVertex);
         int col = indexIs(toVertex);
         if (row != -1 && col != -1) {
@@ -34,7 +36,7 @@ class Graph<VertexType> {
     }
 
     // Check if there is an edge
-    public boolean isEdge(VertexType fromVertex, VertexType toVertex) {
+    public boolean isEdge(Vertex fromVertex, Vertex toVertex) {
         int row = indexIs(fromVertex);
         int col = indexIs(toVertex);
         if (row != -1 && col != -1)
@@ -63,13 +65,13 @@ class Graph<VertexType> {
             marks[i] = false;
     }
 
-    public void markVertex(VertexType vertex) {
+    public void markVertex(Vertex vertex) {
         int index = indexIs(vertex);
         if (index != -1)
             marks[index] = true;
     }
 
-    public boolean isMarked(VertexType vertex) {
+    public boolean isMarked(Vertex vertex) {
         int index = indexIs(vertex);
         if (index != -1)
             return marks[index];
@@ -77,8 +79,8 @@ class Graph<VertexType> {
     }
 
     // Get all adjacent vertices
-    public List<VertexType> getToVertices(VertexType vertex) {
-        List<VertexType> adjVertices = new ArrayList<>();
+    public List<Vertex> getToVertices(Vertex vertex) {
+        List<Vertex> adjVertices = new ArrayList<>();
         int row = indexIs(vertex);
         if (row != -1) {
             for (int col = 0; col < vertices.size(); col++) {
@@ -91,24 +93,37 @@ class Graph<VertexType> {
     }
 
     // Helper: get index of a vertex
-    private int indexIs(VertexType vertex) {
+    private int indexIs(Vertex vertex) {
         return vertices.indexOf(vertex);
     }
 
+    public List<Vertex> getVertices() {
+        return vertices;
+    }
 
-    public ArrayList<Pair<Integer, Integer>> getEdges() {
-        ArrayList<Pair<Integer, Integer>> edges = new ArrayList<>();
-        for (int i = 0; i < adjMatrix.length; i++) {
-            for (int j = 0; j < adjMatrix[i].length; j++) {
-                if (adjMatrix[i][j] == 1) {
-                    edges.add(new Pair<>(i, j));
+    public int[][] getAdjacencyMatrix() {
+        return edges;
+    }
+    public ArrayList<Pair<String, String>> getEdges() {
+        ArrayList<Pair<String, String>> edgeList = new ArrayList<>();
+
+
+        for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < vertices.size(); j++) {
+                if (this.edges[i][j] == 1) {
+                    edgeList.add(new Pair<>(vertices.get(i).getUser().getName(), vertices.get(j).getUser().getName()));
                 }
             }
         }
-        return edges;
+
+        return edgeList;
+    }
     }
 
     
-}
+
+
+
+
 
 

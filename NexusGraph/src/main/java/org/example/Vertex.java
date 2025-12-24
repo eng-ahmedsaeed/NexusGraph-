@@ -1,9 +1,11 @@
+package  org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Vertex {
 
-    private User user;                 
+    private User user;
     private List<Vertex> neighbors;    
 
     public Vertex(User user) {

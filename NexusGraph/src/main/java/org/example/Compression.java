@@ -1,4 +1,4 @@
-package xml_editor;
+package org.example;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
