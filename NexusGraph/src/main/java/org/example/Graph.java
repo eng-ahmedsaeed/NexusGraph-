@@ -96,6 +96,9 @@ class Graph {
     private int indexIs(Vertex vertex) {
         return vertices.indexOf(vertex);
     }
+    public List<VertexType> getVertices() {
+        return vertices;
+    }
 
     public List<Vertex> getVertices() {
         return vertices;

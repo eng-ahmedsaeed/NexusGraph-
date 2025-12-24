@@ -8,11 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 public class NetworkAnalyzer_2 {
-    private Graph graphObj;
+    private Graph<Vertex> graphObj;
     private int n;
     private Map<Integer, Integer> idToIndex;
     private Map<Integer, Integer> indexToId;
-    public NetworkAnalyzer_2(Graph graphObj) {
+    public NetworkAnalyzer_2(Graph<Vertex> graphObj) {
         this.graphObj = graphObj;
         this.n = graphObj.getVertices().size();
         idToIndex = new HashMap<>();
