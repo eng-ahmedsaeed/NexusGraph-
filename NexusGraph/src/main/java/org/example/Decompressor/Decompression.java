@@ -1,3 +1,4 @@
+package  Decompressor;
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;

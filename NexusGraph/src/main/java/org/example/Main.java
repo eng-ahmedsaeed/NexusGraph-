@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -11,7 +12,7 @@ public class Main {
 //        xml1.put(2, "    <name>Ahmed</name>");
 //        xml1.put(3, "    <age>21</age>");
 //        xml1.put(4, "</root>");
-       // XMLValidator validator = new XMLValidator(xml1);
+        // XMLValidator validator = new XMLValidator(xml1);
 //        validator.validate();
 //         validator.PrintErrors();
 //        validator.PrintFixes();
@@ -53,7 +54,6 @@ public class Main {
 //        }
 
 
-
 //        HashMap<Integer, String> xmlLines = new HashMap<>();
 //
 //        xmlLines.put(1, "<users>");
@@ -91,7 +91,7 @@ public class Main {
 
         // System.out.println("XML validated successfully");
 
-     // System.out.println("\n========== TEST 1: VALID XML ==========");
+        // System.out.println("\n========== TEST 1: VALID XML ==========");
 
 //        HashMap<Integer, String> xml1 = new HashMap<>();
 //        xml1.put(1, "<root>");
@@ -106,8 +106,98 @@ public class Main {
 //        System.out.println("Fixed XML:");
 //        for (int i = 1; i <= fixedXML.size(); i++) {
 //            System.out.println(fixedXML.get(i));
+//}
+
+//
+//        /// /////////////////////////////////testing the graph2phot//////////////////
+//        ArrayList<Pair<String, String>> edges = new ArrayList<>();
+//        edges.add(new Pair<>("Alice", "Bob"));
+//        edges.add(new Pair<>("Alice", "Charlie"));
+//        edges.add(new Pair<>("Alice", "Diana"));
+//        edges.add(new Pair<>("Alice", "Eve"));
+//
+//        edges.add(new Pair<>("Bob", "Alice"));
+//        edges.add(new Pair<>("Bob", "Charlie"));
+//        edges.add(new Pair<>("Bob", "Frank"));
+//        edges.add(new Pair<>("Bob", "Grace"));
+//
+//        edges.add(new Pair<>("Charlie", "Alice"));
+//        edges.add(new Pair<>("Charlie", "Bob"));
+//        edges.add(new Pair<>("Charlie", "Heidi"));
+//        edges.add(new Pair<>("Charlie", "Ivan"));
+//
+//        edges.add(new Pair<>("Diana", "Alice"));
+//        edges.add(new Pair<>("Diana", "Eve"));
+//        edges.add(new Pair<>("Diana", "Judy"));
+//
+//        edges.add(new Pair<>("Eve", "Alice"));
+//        edges.add(new Pair<>("Eve", "Frank"));
+//        edges.add(new Pair<>("Eve", "Mallory"));
+//
+//// Secondary cluster
+//        edges.add(new Pair<>("Frank", "Bob"));
+//        edges.add(new Pair<>("Frank", "Grace"));
+//        edges.add(new Pair<>("Frank", "Heidi"));
+//
+//        edges.add(new Pair<>("Grace", "Bob"));
+//        edges.add(new Pair<>("Grace", "Frank"));
+//        edges.add(new Pair<>("Grace", "Ivan"));
+//
+//        edges.add(new Pair<>("Heidi", "Charlie"));
+//        edges.add(new Pair<>("Heidi", "Frank"));
+//        edges.add(new Pair<>("Heidi", "Judy"));
+//
+//        edges.add(new Pair<>("Ivan", "Charlie"));
+//        edges.add(new Pair<>("Ivan", "Grace"));
+//        edges.add(new Pair<>("Ivan", "Kevin"));
+//
+//        edges.add(new Pair<>("Judy", "Diana"));
+//        edges.add(new Pair<>("Judy", "Heidi"));
+//        edges.add(new Pair<>("Judy", "Laura"));
+//
+//// Third cluster
+//        edges.add(new Pair<>("Kevin", "Ivan"));
+//
+//        edges.add(new Pair<>("Kevin", "Niaj"));
+//
+//        edges.add(new Pair<>("Laura", "Judy"));
+//        edges.add(new Pair<>("Laura", "Mallory"));
+//        edges.add(new Pair<>("Laura", "Olivia"));
+//
+//        edges.add(new Pair<>("Mallory", "Eve"));
+//        edges.add(new Pair<>("Mallory", "Kevin"));
+//        edges.add(new Pair<>("Mallory", "Peggy"));
+//
+//
+//        edges.add(new Pair<>("Niaj", "Olivia"));
+//        edges.add(new Pair<>("Niaj", "Rupert"));
+//
+//        edges.add(new Pair<>("Olivia", "Laura"));
+//
+//        edges.add(new Pair<>("Olivia", "Sybil"));
+//
+//// Peripheral but connected
+//        edges.add(new Pair<>("Peggy", "Mallory"));
+//
+//        edges.add(new Pair<>("Rupert", "Niaj"));
+//        edges.add(new Pair<>("Rupert", "Trent"));
+//
+//        edges.add(new Pair<>("Sybil", "Olivia"));
+//        edges.add(new Pair<>("Sybil", "Victor"));
+//
+//        edges.add(new Pair<>("Trent", "Peggy"));
+//        edges.add(new Pair<>("Trent", "Rupert"));
+//
+//
+//        edges.add(new Pair<>("Victor", "Sybil"));
+//
+//
+//        edges.add(new Pair<>("Walter", "Trent"));
+//
+//
+//        Graph2Photo g = new Graph2Photo(edges);
+//        g.Graph2Photoprint("png");
+//
 //        }
-
-
-        }
+    }
 }

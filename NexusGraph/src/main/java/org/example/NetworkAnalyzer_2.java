@@ -71,7 +71,7 @@ public class NetworkAnalyzer_2 {
             }
             if (sum == max) {
                 System.out.println("User name: " + vertices.get(j).getUser().getName() +
-                                   " | User id: " + vertices.get(j).getUser().getId());
+                        " | User id: " + vertices.get(j).getUser().getId());
             }
         }
     }
@@ -85,15 +85,15 @@ public class NetworkAnalyzer_2 {
         boolean[] intersection = new boolean[n];
         int firstIndex = idToIndex.get(ids.get(0));
         for (int j = 0; j < n; j++) {
-    intersection[j] = graph[j][firstIndex] == 1; 
-    }
-
-    for (int i = 1; i < ids.size(); i++) {
-        int userIndex = idToIndex.get(ids.get(i));
-        for (int j = 0; j < n; j++) {
-            intersection[j] = intersection[j] && (graph[j][userIndex] == 1); 
+            intersection[j] = graph[j][firstIndex] == 1;
         }
-    }
+
+        for (int i = 1; i < ids.size(); i++) {
+            int userIndex = idToIndex.get(ids.get(i));
+            for (int j = 0; j < n; j++) {
+                intersection[j] = intersection[j] && (graph[j][userIndex] == 1);
+            }
+        }
 
         boolean found = false;
         int cnt = 1;
@@ -102,7 +102,7 @@ public class NetworkAnalyzer_2 {
                 if (!found)
                     System.out.println("mutual follower(s) found in your selected ids:");
                 System.out.println(cnt + ") User name: " + vertices.get(j).getUser().getName() +
-                                   " | User id: " + vertices.get(j).getUser().getId());
+                        " | User id: " + vertices.get(j).getUser().getId());
                 found = true;
                 cnt++;
             }

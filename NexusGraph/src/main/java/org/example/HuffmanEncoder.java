@@ -1,4 +1,4 @@
-package xml_terminalMode_WS;
+package org.example;
 
 import java.util.ArrayList;
 import java.util.BitSet;
