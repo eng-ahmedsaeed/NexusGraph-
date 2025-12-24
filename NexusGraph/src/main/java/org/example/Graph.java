@@ -94,8 +94,14 @@ class Graph<VertexType> {
     private int indexIs(VertexType vertex) {
         return vertices.indexOf(vertex);
     }
+    public List<VertexType> getVertices() {
+        return vertices;
+    }
 
-
+    public int[][] getAdjacencyMatrix() {
+        return edges;
+    }
+    
     public ArrayList<Pair<Integer, Integer>> getEdges() {
         ArrayList<Pair<Integer, Integer>> edges = new ArrayList<>();
         for (int i = 0; i < adjMatrix.length; i++) {
