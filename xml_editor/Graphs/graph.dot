@@ -1,0 +1,23 @@
+digraph G {
+  rankdir=TB;
+  ratio=fill;
+  node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial"];
+  edge [color="#333333"];
+  "Sara Mohamed" [width=0.7, height=0.7];
+  "Ahmed Ali" [width=1.1, height=1.1];
+  "Mona Ibrahim" [width=1.1, height=1.1];
+  "Omar Hassan" [width=1.3, height=1.3];
+  "Youssef Adel" [width=0.7, height=0.7];
+  "Ahmed Ali" -> "Omar Hassan";
+  "Ahmed Ali" -> "Youssef Adel";
+  "Ahmed Ali" -> "Mona Ibrahim";
+  "Sara Mohamed" -> "Ahmed Ali";
+  "Sara Mohamed" -> "Omar Hassan";
+  "Sara Mohamed" -> "Mona Ibrahim";
+  "Omar Hassan" -> "Ahmed Ali";
+  "Omar Hassan" -> "Sara Mohamed";
+  "Omar Hassan" -> "Mona Ibrahim";
+  "Youssef Adel" -> "Ahmed Ali";
+  "Youssef Adel" -> "Omar Hassan";
+  "Mona Ibrahim" -> "Omar Hassan";
+}

@@ -1,203 +1,93 @@
-package org.example;
+﻿package org.example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
+import org.example.GUI.GuiApplication;
+import org.example.Level_1.XmlEditorCLI;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // HashMap<Integer, String> xml1 = new HashMap<>();
-//
-//        xml1.put(1, "<root>");
-//        xml1.put(2, "    <name>Ahmed</name>");
-//        xml1.put(3, "    <age>21</age>");
-//        xml1.put(4, "</root>");
-        // XMLValidator validator = new XMLValidator(xml1);
-//        validator.validate();
-//         validator.PrintErrors();
-//        validator.PrintFixes();
-//        HashMap<Integer, String> fixedXML = validator.applyFixes();
-//        System.out.println("Fixed XML:");
-//        for (int i = 1; i <= fixedXML.size(); i++) {
-//            System.out.println(fixedXML.get(i));
-//        }
-//        HashMap<Integer, String> xml3 = new HashMap<>();
-//
-//
-//        xml3.put(1, "<root>");
-//        xml3.put(2, "<name>Ahmed</name>");
-//        xml3.put(3, "</age>"); // Mismatched closing tag
-//        xml3.put(4, "</root>");
-//        validator.XMLSetter(xml3);
-//      validator.validate();
-//       validator.PrintErrors();
-//        validator.PrintFixes();
-//        HashMap<Integer, String> fixedXML = validator.applyFixes();
-//        System.out.println("Fixed XML:");
-//        for (int i = 1; i <= fixedXML.size(); i++) {
-//            System.out.println(fixedXML.get(i));
-//        }
-
-//        HashMap<Integer, String> xml6 = new HashMap<>();
-//
-//        xml6.put(1, "<root>");
-//        xml6.put(2, "    </name>"); // Extra closing tag
-//        xml6.put(3, "</root>");
-//        validator.XMLSetter(xml6);
-//        validator.validate();
-//        validator.PrintErrors();
-//        validator.PrintFixes();
-//        HashMap<Integer, String> fixedXML = validator.applyFixes();
-//        System.out.println("Fixed XML:");
-//        for (int i = 1; i <= fixedXML.size(); i++) {
-//            System.out.println(fixedXML.get(i));
-//        }
-
-
-//        HashMap<Integer, String> xmlLines = new HashMap<>();
-//
-//        xmlLines.put(1, "<users>");
-//        xmlLines.put(2, "    <user>");
-//        xmlLines.put(3, "        <id>1</id>");
-//        xmlLines.put(4, "        <name>user1</name>");
-//        xmlLines.put(5, "        <posts>");
-//        xmlLines.put(6, "            <post>");
-//        xmlLines.put(7, "                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod");
-//        xmlLines.put(8, "                tempor incididunt ut labore et dolore magna aliqua.");
-//        xmlLines.put(9, "            </post>");
-//        xmlLines.put(10, "            <post>");
-//        xmlLines.put(11, "                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi");
-//        xmlLines.put(12, "                ut aliquip ex ea commodo consequat.");
-//        xmlLines.put(13, "            </post>");
-//        xmlLines.put(14, "        </posts>");
-//        xmlLines.put(15, "        <followers>");
-//        xmlLines.put(16, "            <follower>");
-//        xmlLines.put(17, "                <name>2</id>");
-//        xmlLines.put(18, "            </follower>");
-//        xmlLines.put(19, "            <follower>");
-//        xmlLines.put(20, "                <id>4</id>");
-//        xmlLines.put(21, "            </follower>");
-//        xmlLines.put(22, "    </user>");
-//        xmlLines.put(23, "</users>");
-//        validator.XMLSetter(xmlLines);
-//        validator.validate();
-//        validator.PrintErrors();
-//        validator.PrintFixes();
-//        HashMap<Integer, String> fixedXML = validator.applyFixes();
-//        System.out.println("Fixed XML:");
-//        for (int i = 1; i <= fixedXML.size(); i++) {
-//            System.out.println(fixedXML.get(i));
-//        }
-
-        // System.out.println("XML validated successfully");
-
-        // System.out.println("\n========== TEST 1: VALID XML ==========");
-
-//        HashMap<Integer, String> xml1 = new HashMap<>();
-//        xml1.put(1, "<root>");
-//        xml1.put(2, "  <name>Ahmed</name>");
-//        xml1.put(3, "</root>");
-//
-//        XMLValidator validator = new XMLValidator(xml1);
-//        validator.validate();
-//        validator.PrintErrors();
-//        validator.PrintFixes();
-//        HashMap<Integer, String> fixedXML = validator.applyFixes();
-//        System.out.println("Fixed XML:");
-//        for (int i = 1; i <= fixedXML.size(); i++) {
-//            System.out.println(fixedXML.get(i));
-//}
-
-//
-//        /// /////////////////////////////////testing the graph2phot//////////////////
-//        ArrayList<Pair<String, String>> edges = new ArrayList<>();
-//        edges.add(new Pair<>("Alice", "Bob"));
-//        edges.add(new Pair<>("Alice", "Charlie"));
-//        edges.add(new Pair<>("Alice", "Diana"));
-//        edges.add(new Pair<>("Alice", "Eve"));
-//
-//        edges.add(new Pair<>("Bob", "Alice"));
-//        edges.add(new Pair<>("Bob", "Charlie"));
-//        edges.add(new Pair<>("Bob", "Frank"));
-//        edges.add(new Pair<>("Bob", "Grace"));
-//
-//        edges.add(new Pair<>("Charlie", "Alice"));
-//        edges.add(new Pair<>("Charlie", "Bob"));
-//        edges.add(new Pair<>("Charlie", "Heidi"));
-//        edges.add(new Pair<>("Charlie", "Ivan"));
-//
-//        edges.add(new Pair<>("Diana", "Alice"));
-//        edges.add(new Pair<>("Diana", "Eve"));
-//        edges.add(new Pair<>("Diana", "Judy"));
-//
-//        edges.add(new Pair<>("Eve", "Alice"));
-//        edges.add(new Pair<>("Eve", "Frank"));
-//        edges.add(new Pair<>("Eve", "Mallory"));
-//
-//// Secondary cluster
-//        edges.add(new Pair<>("Frank", "Bob"));
-//        edges.add(new Pair<>("Frank", "Grace"));
-//        edges.add(new Pair<>("Frank", "Heidi"));
-//
-//        edges.add(new Pair<>("Grace", "Bob"));
-//        edges.add(new Pair<>("Grace", "Frank"));
-//        edges.add(new Pair<>("Grace", "Ivan"));
-//
-//        edges.add(new Pair<>("Heidi", "Charlie"));
-//        edges.add(new Pair<>("Heidi", "Frank"));
-//        edges.add(new Pair<>("Heidi", "Judy"));
-//
-//        edges.add(new Pair<>("Ivan", "Charlie"));
-//        edges.add(new Pair<>("Ivan", "Grace"));
-//        edges.add(new Pair<>("Ivan", "Kevin"));
-//
-//        edges.add(new Pair<>("Judy", "Diana"));
-//        edges.add(new Pair<>("Judy", "Heidi"));
-//        edges.add(new Pair<>("Judy", "Laura"));
-//
-//// Third cluster
-//        edges.add(new Pair<>("Kevin", "Ivan"));
-//
-//        edges.add(new Pair<>("Kevin", "Niaj"));
-//
-//        edges.add(new Pair<>("Laura", "Judy"));
-//        edges.add(new Pair<>("Laura", "Mallory"));
-//        edges.add(new Pair<>("Laura", "Olivia"));
-//
-//        edges.add(new Pair<>("Mallory", "Eve"));
-//        edges.add(new Pair<>("Mallory", "Kevin"));
-//        edges.add(new Pair<>("Mallory", "Peggy"));
-//
-//
-//        edges.add(new Pair<>("Niaj", "Olivia"));
-//        edges.add(new Pair<>("Niaj", "Rupert"));
-//
-//        edges.add(new Pair<>("Olivia", "Laura"));
-//
-//        edges.add(new Pair<>("Olivia", "Sybil"));
-//
-//// Peripheral but connected
-//        edges.add(new Pair<>("Peggy", "Mallory"));
-//
-//        edges.add(new Pair<>("Rupert", "Niaj"));
-//        edges.add(new Pair<>("Rupert", "Trent"));
-//
-//        edges.add(new Pair<>("Sybil", "Olivia"));
-//        edges.add(new Pair<>("Sybil", "Victor"));
-//
-//        edges.add(new Pair<>("Trent", "Peggy"));
-//        edges.add(new Pair<>("Trent", "Rupert"));
-//
-//
-//        edges.add(new Pair<>("Victor", "Sybil"));
-//
-//
-//        edges.add(new Pair<>("Walter", "Trent"));
-//
-//
-//        Graph2Photo g = new Graph2Photo(edges);
-//        g.Graph2Photoprint("png");
-//
-//        }
+        if (args.length > 0) {
+            XmlEditorCLI cli = new XmlEditorCLI();
+            cli.run(args);
+        } else {
+            runInteractiveShell();
+        }
+    }
+    
+    private static void runInteractiveShell() {
+        Scanner scanner = new Scanner(System.in);
+        XmlEditorCLI cli = new XmlEditorCLI();
+        
+        System.out.println("â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—");
+        System.out.println("â•‘           XML Editor / NexusGraph - Interactive Mode     â•‘");
+        System.out.println("â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£");
+        System.out.println("â•‘  Commands:                                               â•‘");
+        System.out.println("â•‘    xml_editor          - Launch GUI                      â•‘");
+        System.out.println("â•‘    verify -i file.xml  - Validate XML                    â•‘");
+        System.out.println("â•‘    format -i file.xml  - Format XML                      â•‘");
+        System.out.println("â•‘    draw -i file.xml    - Generate graph                  â•‘");
+        System.out.println("â•‘    help                - Show all commands               â•‘");
+        System.out.println("â•‘    exit                - Exit the program                â•‘");
+        System.out.println("â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•");
+        System.out.println();
+        
+        while (true) {
+            System.out.print("xml_editor> ");
+            String input = scanner.nextLine().trim();
+            
+            if (input.isEmpty()) {
+                continue;
+            }
+            if (input.equalsIgnoreCase("exit") || input.equalsIgnoreCase("quit")) {
+                System.out.println("Goodbye!");
+                break;
+            }
+            
+            if (input.equalsIgnoreCase("xml_editor") || input.equalsIgnoreCase("gui")) {
+                System.out.println("Launching GUI...");
+                GuiApplication.main(new String[]{});
+                continue;
+            }
+            
+            if (input.equalsIgnoreCase("help")) {
+                printHelp();
+                continue;
+            }
+            String[] cmdArgs = input.split("\\s+");
+            try {
+                cli.run(cmdArgs);
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+            System.out.println();
+        }
+        
+        scanner.close();
+    }
+    
+    private static void printHelp() {
+        System.out.println("\n=== XML Editor Commands ===\n");
+        System.out.println("LEVEL 1 - XML Processing:");
+        System.out.println("  verify -i <file.xml> [-f] [-o <output.xml>]  Validate XML, -f to fix");
+        System.out.println("  format -i <file.xml> -o <output.xml>         Pretty-print XML");
+        System.out.println("  mini -i <file.xml> -o <output.xml>           Minify XML");
+        System.out.println("  json -i <file.xml> -o <output.json>          Convert to JSON");
+        System.out.println("  compress -i <file.xml> -o <output.comp>      Compress XML");
+        System.out.println("  decompress -i <file.comp> -o <output.xml>    Decompress XML");
+        System.out.println();
+        System.out.println("LEVEL 2 - Social Network Analysis:");
+        System.out.println("  draw -i <file.xml> [-o <output.png>]         Generate network graph");
+        System.out.println("  most_active -i <file.xml>                    Find most active users");
+        System.out.println("  most_influencer -i <file.xml>                Find most influential users");
+        System.out.println("  mutual -i <file.xml> -ids <1,2,3>            Find mutual followers");
+        System.out.println("  suggest -i <file.xml> -id <user_id>          Get user suggestions");
+        System.out.println("  search -i <file.xml> -w <word>               Search posts by word");
+        System.out.println("  search -i <file.xml> -t <topic>              Search posts by topic");
+        System.out.println();
+        System.out.println("OTHER:");
+        System.out.println("  xml_editor / gui                             Launch GUI");
+        System.out.println("  help                                         Show this help");
+        System.out.println("  exit / quit                                  Exit program");
+        System.out.println();
     }
 }
