@@ -94,6 +94,21 @@ class Graph<VertexType> {
     private int indexIs(VertexType vertex) {
         return vertices.indexOf(vertex);
     }
+
+
+    public ArrayList<Pair<Integer, Integer>> getEdges() {
+        ArrayList<Pair<Integer, Integer>> edges = new ArrayList<>();
+        for (int i = 0; i < adjMatrix.length; i++) {
+            for (int j = 0; j < adjMatrix[i].length; j++) {
+                if (adjMatrix[i][j] == 1) {
+                    edges.add(new Pair<>(i, j));
+                }
+            }
+        }
+        return edges;
+    }
+
+    
 }
 
 
