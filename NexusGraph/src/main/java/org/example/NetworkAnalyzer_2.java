@@ -2,24 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dsa_project_2;
+package org.example;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 public class NetworkAnalyzer_2 {
-    private Graph graphObj;
+    private Graph<Vertex> graphObj;
     private int n;
     private Map<Integer, Integer> idToIndex;
     private Map<Integer, Integer> indexToId;
-    public NetworkAnalyzer_2(Graph graphObj) {
+    public NetworkAnalyzer_2(Graph<Vertex> graphObj) {
         this.graphObj = graphObj;
         this.n = graphObj.getVertices().size();
         idToIndex = new HashMap<>();
         indexToId = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            idToIndex.put(graphObj.getVertices().get(i).id, i);
-            indexToId.put(i, graphObj.getVertices().get(i).id);
+            Vertex v = graphObj.getVertices().get(i);
+            idToIndex.put(v.getUser().getId(), i);
+            indexToId.put(i, v.getUser().getId());
         }
     }
     public List<Integer> mostActiveUsers() {
@@ -50,7 +51,7 @@ public class NetworkAnalyzer_2 {
 
     public void mostInfluencerUser() {
         int[][] graph = graphObj.getAdjacencyMatrix();
-        ArrayList<Vertex> vertices = graphObj.getVertices();
+        List<Vertex> vertices = graphObj.getVertices();
         int max = -1;
         for (int j = 0; j < n; j++) {
             int sum = 0;
@@ -69,14 +70,14 @@ public class NetworkAnalyzer_2 {
                 sum += graph[i][j];
             }
             if (sum == max) {
-                System.out.println("User name: " + vertices.get(j).name +
-                                   " | User id: " + vertices.get(j).id);
+                System.out.println("User name: " + vertices.get(j).getUser().getName() +
+                                   " | User id: " + vertices.get(j).getUser().getId());
             }
         }
     }
     public void mutualFollowers(List<Integer> ids) {
         int[][] graph = graphObj.getAdjacencyMatrix();
-        ArrayList<Vertex> vertices = graphObj.getVertices();
+        List<Vertex> vertices = graphObj.getVertices();
         if (ids == null || ids.isEmpty()) {
             System.out.println("No user IDs provided.");
             return;
@@ -100,8 +101,8 @@ public class NetworkAnalyzer_2 {
             if (intersection[j]) {
                 if (!found)
                     System.out.println("mutual follower(s) found in your selected ids:");
-                System.out.println(cnt + ") User name: " + vertices.get(j).name +
-                                   " | User id: " + vertices.get(j).id);
+                System.out.println(cnt + ") User name: " + vertices.get(j).getUser().getName() +
+                                   " | User id: " + vertices.get(j).getUser().getId());
                 found = true;
                 cnt++;
             }
