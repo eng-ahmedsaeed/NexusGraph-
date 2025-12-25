@@ -101,11 +101,31 @@ Before running the project, ensure you have the following installed:
 
 ## Usage
 
-### GUI Mode
+### Quick Start - Windows Executable (Recommended)
 
-Launch the graphical user interface:
+The easiest way to run the application is using the pre-built Windows executable. No installation or setup required.
+
+1. Navigate to the `xml_editor` folder
+2. Double-click `xml_editor.exe`
+3. The GUI will launch automatically
+
+```
+xml_editor/
+└── xml_editor.exe    <-- Double-click to run
+```
+
+This method requires no Java installation or build steps - simply run the executable and start using the application.
+
+---
+
+### Alternative Methods
+
+#### GUI Mode (Using Maven)
+
+Launch the graphical user interface using Maven:
 
 ```bash
+cd NexusGraph
 mvn javafx:run
 ```
 
@@ -115,7 +135,7 @@ Or run without arguments to enter interactive mode, then type:
 xml_editor
 ```
 
-### CLI Mode
+#### CLI Mode
 
 Run commands directly from the command line:
 
@@ -123,7 +143,7 @@ Run commands directly from the command line:
 java -jar target/xml-editor-1.0-SNAPSHOT.jar <command> [options]
 ```
 
-### Interactive Shell
+#### Interactive Shell
 
 Run the application without arguments to enter the interactive shell:
 
