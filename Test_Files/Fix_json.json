@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Ahmed Ali",
+      "posts": [
+        {
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "topics": [
+            "economy",
+            "finance"
+          ]
+        },
+        {
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "topics": [
+            "solar_energy"
+          ]
+        }
+      ],
+      "followers": [
+        {
+          "id": "2"
+        },
+        {
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Yasser Ahmed",
+      "posts": [
+        {
+          "body": "Lorem ipsum dolor sit amet.",
+          "topics": [
+            "education"
+          ]
+        }
+      ],
+      "followers": [
+        {
+          "id": "1"
+        }
+      ]
+    }
+  ]
+}

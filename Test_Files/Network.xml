@@ -1,0 +1,133 @@
+<users>
+
+    <user>
+        <id>1</id>
+        <name>Ahmed Ali</name>
+
+        <posts>
+            <post>
+                <body>
+                    Learning data structures and algorithms is very important.
+                </body>
+                <topics>
+                    <topic>education</topic>
+                    <topic>programming</topic>
+                </topics>
+            </post>
+
+            <post>
+                <body>
+                    JavaFX makes desktop applications more interactive.
+                </body>
+                <topics>
+                    <topic>java</topic>
+                    <topic>gui</topic>
+                </topics>
+            </post>
+        </posts>
+
+        <followers>
+            <follower>2</follower>
+            <follower>3</follower>
+            <follower>4</follower>
+        </followers>
+    </user>
+
+    <user>
+        <id>2</id>
+        <name>Sara Mohamed</name>
+
+        <posts>
+            <post>
+                <body>
+                    XML validation is tricky but very useful.
+                </body>
+                <topics>
+                    <topic>xml</topic>
+                    <topic>validation</topic>
+                </topics>
+            </post>
+        </posts>
+
+        <followers>
+            <follower>3</follower>
+        </followers>
+    </user>
+
+    <user>
+        <id>3</id>
+        <name>Omar Hassan</name>
+
+        <posts>
+            <post>
+                <body>
+                    Graph data structures are perfect for social networks.
+                </body>
+                <topics>
+                    <topic>graph</topic>
+                    <topic>data_structures</topic>
+                </topics>
+            </post>
+
+            <post>
+                <body>
+                    I enjoy working on backend systems.
+                </body>
+                <topics>
+                    <topic>backend</topic>
+                </topics>
+            </post>
+        </posts>
+
+        <followers>
+            <follower>1</follower>
+            <follower>2</follower>
+            <follower>4</follower>
+            <follower>5</follower>
+        </followers>
+    </user>
+
+    <user>
+        <id>4</id>
+        <name>Youssef Adel</name>
+
+        <posts>
+            <post>
+                <body>
+                    Following many people helps me learn faster.
+                </body>
+                <topics>
+                    <topic>learning</topic>
+                </topics>
+            </post>
+        </posts>
+
+        <followers>
+            <follower>1</follower>
+        </followers>
+    </user>
+
+    <user>
+        <id>5</id>
+        <name>Mona Ibrahim</name>
+
+        <posts>
+            <post>
+                <body>
+                    Cybersecurity is becoming more important every day.
+                </body>
+                <topics>
+                    <topic>security</topic>
+                    <topic>cybersecurity</topic>
+                </topics>
+            </post>
+        </posts>
+
+        <followers>
+            <follower>1</follower>
+            <follower>2</follower>
+            <follower>3</follower>
+        </followers>
+    </user>
+
+</users>
